@@ -1,0 +1,26 @@
+{% include 'partials/header.html' with title_info="Home" %}
+
+    {% block messages %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} my-2">
+                    <a class="close" data-dismiss="alert">x</a>
+                    {{ message|safe }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+
+    <h1>{{ post.title }}</h1>
+    <h2>{{ post.description }}</h2>
+
+    <p>Posted by: <a href="/user/{{ post.author.id }}">{{ post.author.username }}</a></p>
+
+    {% if user == post.author %}
+        <a href="update">Update post</a><br>
+        <a href="delete">Delete post</a><br>
+    {% endif %}
+
+    <a href="{% url 'posts' %}">Back to all posts</a>
+
+{% include 'partials/footer.html' %}

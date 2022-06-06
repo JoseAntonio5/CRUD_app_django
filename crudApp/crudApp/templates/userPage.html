@@ -1,0 +1,24 @@
+{% include 'partials/header.html' with title_info="Home" %}
+
+    <h1>{{ user.username }}</h1>
+
+    {% block messages %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} my-2">
+                    <a class="close" data-dismiss="alert">x</a>
+                    {{ message|safe }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+
+    <h2>Post from {{ user.username }}</h2>
+    <ul>
+        {% for post in posts %}
+            <hr>
+            <li>{{ post.title }} <br><a href="/posts/{{ post.id }}/">More</a> </li>
+        {% endfor %}
+    </ul>
+
+{% include 'partials/footer.html' %}

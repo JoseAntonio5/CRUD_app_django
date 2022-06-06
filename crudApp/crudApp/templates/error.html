@@ -1,0 +1,16 @@
+{% include 'partials/header.html' with title_info="Home" %}
+
+    {% block messages %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} my-2">
+                    <a class="close" data-dismiss="alert">x</a>
+                    {{ message|safe }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+
+    <a href="/posts/">Back to homepage</a>
+
+{% include 'partials/footer.html' %}

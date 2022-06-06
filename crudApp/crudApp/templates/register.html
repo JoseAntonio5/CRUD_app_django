@@ -1,0 +1,10 @@
+{% include 'partials/header.html' with title_info="Home" %}
+
+    <h1>Register a new user!</h1>
+    <form action="#" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Register</button>
+    </form>
+
+{% include 'partials/footer.html' %}

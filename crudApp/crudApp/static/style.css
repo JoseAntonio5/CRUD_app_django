@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#createNewPost, #logoutBtn {
+    text-decoration: none;
+}
+
+#createNewPost > button {
+    color: #fff;
+}
+
+footer {
+    margin-top: auto;
+}

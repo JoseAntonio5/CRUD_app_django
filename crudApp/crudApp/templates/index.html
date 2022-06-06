@@ -1,0 +1,35 @@
+{% include 'partials/header.html' with title_info="Home" %}
+
+    <div class="container">
+
+        <h6>Hello, <b>{{ user.username }}</b></h6>
+
+        <h1>Posts</h1>
+
+        <a id="createNewPost" href="{% url 'new' %}">
+            <button type="button" class="btn btn-info">Create a new post</button>
+        </a>
+
+        {% block messages %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} my-2">
+                        <a class="close" data-dismiss="alert">x</a>
+                        {{ message|safe }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endblock %}
+
+        {% for post in posts %}
+            <div class="card w-75 my-1">
+                <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <a href="{{ post.id }}" class="btn btn-primary">See more</a>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% include 'partials/footer.html' %}

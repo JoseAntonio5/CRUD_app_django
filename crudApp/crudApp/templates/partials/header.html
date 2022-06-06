@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogApp | {{ title_info }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+
+    <nav id="headerNav" class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/posts">BlogApp</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/posts">Posts</a>
+              </li>
+            </ul>
+            <div class="navbar-text">
+                <a id="userPage" href="/user/{{ user.id }}">{{ user.username }}</a>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="navbar-text">
+                <a id="logoutBtn" href="{% url 'logout' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Logout</button>
+                </a>
+            </div>
+            {% else %}
+            <div class="navbar-text">
+                <a id="logoutBtn" href="{% url 'login' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
+                </a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+    </nav>
